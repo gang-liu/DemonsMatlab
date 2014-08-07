@@ -1,7 +1,7 @@
 % Demons Registration
 
 function demons
-add_BFL_paths;
+
 figure(1); clf; colormap gray;
 
 %% Parameters
@@ -15,17 +15,11 @@ nlevel          = 4;   % multiresolution
 do_display      = 1;   % display iterations
 
 % Load images
-%load('data/im1.mat');
-%load('data/im2.mat');
-
 FFILE = MRIread('/autofs/cluster/con_003/users/mert/lukeliu/zhaolong/data/rawdata/orignal01.nii.gz');
 MFILE = MRIread('/autofs/cluster/con_003/users/mert/lukeliu/zhaolong/data/rawdata/orignal02affined.nii.gz');
-LFILE = MRIread('/autofs/cluster/con_003/users/mert/lukeliu/zhaolong/data/rawdata/lable02.nii.gz');
+
 F = FFILE.vol;
 M = MFILE.vol;
-Label = LFILE.vol;
-%F = 256*F(31:90,31:90,:);
-%M = 256*M(31:90,31:90,:);
 
 if nlevel == 1
     
@@ -69,7 +63,8 @@ else
     end
     
 end
-
+LFILE = MRIread('/autofs/cluster/con_003/users/mert/lukeliu/zhaolong/data/rawdata/lable02.nii.gz');
+Label = LFILE.vol;
 
 
 MovedLabel     = iminterpolate(Label,sx,sy,sz);
@@ -82,6 +77,4 @@ SaveLabelFile.vol = MovedLabel;
 
 MRIwrite(SAVEFILE, 'MovedIntensity02.mgz');
 MRIwrite(SaveLabelFile, 'MovedLabel02.mgz');
-
 end
-

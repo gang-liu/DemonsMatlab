@@ -15,9 +15,7 @@ function I = iminterpolate(I,sx,sy,sz,mode)
 
     if size(size(I),2)==4; I = iminterpolate_multichannel(I,sx,sy,sz,mode); return; end;
     
-  %  if nargin<5; mode = 'linear'; end;
-    if nargin<5; mode = 'nearest'; end;
-    
+    if nargin<5; mode = 'linear'; end;
     
     % Find update points on moving image
     nx = size(I,1); ny = size(I,2); nz = size(I,3);
