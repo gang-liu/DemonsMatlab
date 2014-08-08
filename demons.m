@@ -67,7 +67,7 @@ LFILE = MRIread('/autofs/cluster/con_003/users/mert/lukeliu/zhaolong/data/rawdat
 Label = LFILE.vol;
 
 
-MovedLabel     = iminterpolate(Label,sx,sy,sz);
+MovedLabel     = iminterpolate(Label,sxl,syl,szl);
 
 SAVEFILE=FFILE;
 SAVEFILE.vol = Mp;
